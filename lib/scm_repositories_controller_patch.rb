@@ -46,7 +46,8 @@ module ScmRepositoriesControllerPatch
             #end
 
             def create_with_add
-                @repository = Repository.factory(params[:repository_scm], params[:repository])
+                attrs = pickup_extra_info
+                @repository = Repository.factory(params[:repository_scm], attrs[:attrs])
                 if @repository
                     @repository.project = @project
 

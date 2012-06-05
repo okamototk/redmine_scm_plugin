@@ -11,9 +11,7 @@ require_dependency 'scm_hook'
 
 Rails.logger.info 'Starting SCM Creator Plugin for Redmine'
 
-ActiveRecord::Base.observers << :repository_observer # FIXME
-# ActiveRecord::Base.instantiate_observers
-# Rails.configuration.active_record.observers << :repository_observer
+Rails.configuration.active_record.observers << :repository_observer
 
 # FIXME: ActionDispatch::Callbacks.to_prepare do
 Rails.configuration.to_prepare do
@@ -34,5 +32,5 @@ Redmine::Plugin.register :redmine_scm_plugin do
     author_url 'http://www.andriylesyuk.com/'
     description 'Allows creating Subversion, Git, Mercurial and Bazaar repositories using Redmine.'
     url 'http://projects.andriylesyuk.com/projects/redmine-svn'
-    version '0.3.1'
+    version '0.4.0'
 end
